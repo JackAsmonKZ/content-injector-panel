@@ -30,6 +30,7 @@ import EditIcon from "@mui/icons-material/Edit";
 import WhitelistDomains from "../../components/WhitelistDomains/WhitelistDomains";
 import styles from "./CampaignDetails.module.scss";
 import { VALID_KEY_REGEX } from "../../constants";
+import type { Campaign } from "../../types";
 
 interface Injectable {
   id: string;
@@ -57,6 +58,7 @@ const CampaignDetails = () => {
     value: "",
   });
   const [keyError, setKeyError] = useState<string>("");
+  const [campaign, setCampaign] = useState<Campaign | null>(null);
 
   const isValidKey = (key: string) => VALID_KEY_REGEX.test(key);
 
@@ -166,14 +168,27 @@ const CampaignDetails = () => {
     setEditData({ key: "", type: "", value: "" });
   };
 
+  useEffect(() => {
+    if (!id) return;
+    supabase
+      .from("campaigns")
+      .select("*")
+      .eq("id", id)
+      .single()
+      .then(({ data }) => setCampaign(data));
+  }, [id]);
+
   return (
     <>
       <Box sx={{ p: 3 }} position={"relative"}>
-        <Typography variant="h5" gutterBottom>
-          Подмены кампании: {id}
+        <Typography variant="h4" fontWeight={600} gutterBottom>
+          {campaign?.name || "Кампания"}
+        </Typography>
+        <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
+          ID: {id}
         </Typography>
         {id && <WhitelistDomains campaignId={id} />}
-        <Card sx={{ mb: 3 }}>
+        <Card>
           <CardContent>
             <Typography variant="h6" gutterBottom>
               Добавить подмену
@@ -272,8 +287,6 @@ const CampaignDetails = () => {
               </Button>
             </Stack>
           </CardContent>
-        </Card>
-        <Card>
           <CardContent>
             <Typography variant="h6" gutterBottom>
               Список подмен

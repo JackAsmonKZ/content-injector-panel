@@ -17,12 +17,7 @@ import {
 } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { useNavigate } from "react-router-dom";
-
-interface Campaign {
-  id: string;
-  name: string;
-  created_at: string;
-}
+import type { Campaign } from "../../types";
 
 const Dashboard = () => {
   const [campaigns, setCampaigns] = useState<Campaign[]>([]);

@@ -2,7 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Dashboard from "./pages/Dashboard/Dashboard";
 import CampaignDetails from "./pages/CampaignDetails/CampaignDetails";
 import AppLayout from "./components/AppLayout";
-import Page from "./pages/Page/Page";
+import Instruction from "./pages/Instruction/Instruction";
 
 function App() {
   return (
@@ -12,7 +12,7 @@ function App() {
           path="/"
           element={
             <AppLayout>
-              <Page />
+              <Instruction />
             </AppLayout>
           }
         />

@@ -1,0 +1,38 @@
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 32px 16px;
+  font-family: sans-serif;
+  line-height: 1.6;
+  color: #333;
+}
+
+h1,
+h2,
+h3 {
+  font-weight: bold;
+  margin-top: 24px;
+  margin-bottom: 12px;
+}
+
+code {
+  background-color: #f4f4f4;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 0.95em;
+}
+
+pre {
+  background-color: #f4f4f4;
+  padding: 12px;
+  border-radius: 6px;
+  overflow-x: auto;
+  margin-bottom: 24px;
+}
+
+img {
+  max-width: 100%;
+  margin: 16px 0;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
